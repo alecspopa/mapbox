@@ -90,6 +90,12 @@ Static map with geojson overlay
     # => "api.tiles.mapbox.com/v4/mapbox.streets-satellite/geojson(%7B%22type%22:%22Feature%22,%22properties%22:%7B%22stroke-width%22:4,%22stroke%22:%22%23ff4444%22,%22stroke-opacity%22:0.5%7D,%22geometry%22:%7B%22type%22:%22Polygon%22,%22coordinates%22:[[[-69.89912109375001,12.452001953124963],[-70.05087890624995,12.597070312500037],[-69.97314453125,12.567626953124986],[-69.89912109375001,12.452001953124963]]]%7D%7D)/-69.95,12.51,12/1280x800.png?access_token=pk.RtaW4iLCJhIjoid1ZLYXc2WSJ9.3K_mHa"
 ```
 
+Reduce coordinates for geojson
+
+```ruby
+    coordinates = Geojson::GeometrySimplifier.new(coordinates: coordinates, threshold: 0.05).simplify
+```
+
 ### MapboxMarker
 
 ... docs coming soon ...

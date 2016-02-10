@@ -143,4 +143,20 @@ describe Geojson do
       end
     end
   end
+
+
+  context 'GeometrySimplifier' do
+    describe '#simplify' do
+      it 'should not fail with empty coordinates' do
+        expect( Geojson::GeometrySimplifier.new(coordinates: []).simplify ).to eq([])
+      end
+
+      it 'should reduce coordinates closer then threshold' do
+        coordinates = [[56.26, 25.27], [56.26, 25.28], [56.27, 25.28], [56.27, 25.28], [56.27, 25.28], [56.27, 25.27], [56.28, 25.27], [56.28, 25.27], [56.28, 25.27], [56.29, 25.27], [56.28, 25.27], [56.28, 25.25], [56.27, 25.25], [56.26, 25.25], [56.26, 25.26], [56.26, 25.26], [56.26, 25.26], [56.26, 25.27], [56.26, 25.27], [56.26, 25.27]]
+        expected = [[56.26, 25.27], [56.28, 25.27], [56.27, 25.25], [56.26, 25.27]]
+        expect( Geojson::GeometrySimplifier.new(coordinates: coordinates, threshold: 0.05).simplify ).to eq(expected)
+      end
+    end
+  end
+
 end
