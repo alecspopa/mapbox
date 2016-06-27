@@ -13,7 +13,7 @@ module Geojson
     end
 
     def properties=(value)
-      fail ArgumentError, 'geometry must be an instance of Geojson::Geometry' unless value.instance_of?(Geojson::Properties)
+      fail ArgumentError, 'properties must be an instance of Geojson::Properties' unless value.instance_of?(Geojson::Properties)
       @properties = value
     end
 
